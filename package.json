@@ -1,0 +1,17 @@
+{
+  "name": "lanshare",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LanShare 局域网文件共享工具 · 工作区根配置（可选 npm 启动入口，核心启动器为 start.py）",
+  "scripts": {
+    "start": "python start.py",
+    "build": "cd frontend && npm run build",
+    "dev": "concurrently -n backend,web -c cyan,green \"npm run dev:backend\" \"npm run dev:web\"",
+    "dev:backend": "python -m app.main",
+    "dev:web": "cd frontend && npm run dev",
+    "install:all": "python -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple && cd frontend && npm install --registry=https://registry.npmmirror.com"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

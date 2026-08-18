@@ -1,0 +1,120 @@
+/* LanShare 全局样式：品牌化主题（P0 视觉重构） */
+:root {
+  /* 品牌色 */
+  --lanshare-primary: #2563eb;
+  --lanshare-primary-dark: #1d4ed8;
+  --lanshare-gradient: linear-gradient(135deg, #2563eb 0%, #4f7cff 55%, #7c8cf8 100%);
+  --lanshare-success: #10b981;
+  --lanshare-warning: #f59e0b;
+  --lanshare-danger: #ef4444;
+  --lanshare-info: #3b82f6;
+
+  /* 中性色 */
+  --lanshare-bg: #f5f7fb;
+  --lanshare-card: #ffffff;
+  --lanshare-text: #1f2937;
+  --lanshare-text-secondary: #6b7280;
+  --lanshare-border: #e5e7eb;
+
+  /* 圆角与阴影 */
+  --lanshare-radius-card: 12px;
+  --lanshare-radius-control: 8px;
+  --lanshare-shadow-card: 0 4px 16px rgba(37, 99, 235, 0.08);
+  --lanshare-shadow-hover: 0 8px 24px rgba(37, 99, 235, 0.14);
+
+  /* Element Plus 主题变量覆盖（统一品牌色，避免逐个组件硬编码） */
+  --el-color-primary: #2563eb;
+  --el-color-primary-dark-2: #1d4ed8;
+  --el-color-primary-light-3: #6b8ef5;
+  --el-color-primary-light-5: #a5bdf9;
+  --el-color-primary-light-7: #d3dffc;
+  --el-color-primary-light-8: #e5edfd;
+  --el-color-primary-light-9: #f2f6fe;
+  --el-color-success: #10b981;
+  --el-color-warning: #f59e0b;
+  --el-color-danger: #ef4444;
+  --el-color-error: #ef4444;
+  --el-color-info: #3b82f6;
+  --el-border-radius-base: 8px;
+  --el-border-radius-small: 6px;
+  --el-text-color-primary: #1f2937;
+  --el-text-color-regular: #374151;
+  --el-text-color-secondary: #6b7280;
+  --el-border-color: #e5e7eb;
+  --el-border-color-light: #eceef1;
+  --el-border-color-lighter: #f0f2f5;
+  --el-fill-color-light: #f5f7fb;
+  --el-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  height: 100%;
+  font-family: var(--el-font-family);
+  background: var(--lanshare-bg);
+  color: var(--lanshare-text);
+}
+
+/* Element Plus 组件微调 */
+.el-table {
+  --el-table-header-bg-color: #f8fafd;
+  --el-table-header-text-color: #374151;
+  --el-table-border-color: #f0f2f5;
+  --el-table-row-hover-bg-color: #f5f8ff;
+}
+
+.el-dialog {
+  border-radius: 14px;
+  box-shadow: var(--lanshare-shadow-hover);
+}
+
+.el-button {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* 上传拖拽高亮 */
+.drag-over {
+  outline: 2px dashed var(--lanshare-primary);
+  outline-offset: -2px;
+  background: var(--el-color-primary-light-9) !important;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7cdd8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a9b2c2;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 淡入过渡动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

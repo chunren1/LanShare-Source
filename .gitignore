@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# 构建产物
+dist/
+build/
+
+# 运行时数据（文件存储/数据库/日志）
+data/
+logs/
+*.db
+
+# 打包产物
+installer/output/
+*.exe
+
+# 环境与密钥
+.env
+.env.*
+*.credentials.yaml
+*.pem
+*.key
+
+# 编辑器/工具
+.idea/
+.vscode/
+.codebuddy/
+.DS_Store
