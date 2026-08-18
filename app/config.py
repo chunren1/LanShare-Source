@@ -8,27 +8,30 @@ IS_FROZEN = getattr(sys, "frozen", False)
 
 if IS_FROZEN:
     # 打包后：exe 所在目录作为应用目录（数据存放于此，重启不丢失）
-    APP_DIR = Path(sys.executable).resolve().parent
+    _app_dir = Path(sys.executable).resolve().parent
     # 前端静态资源被 PyInstaller 解压到临时目录
-    FRONTEND_DIST = Path(getattr(sys, "_MEIPASS", APP_DIR)) / "frontend_dist"
+    _frontend_dist = Path(getattr(sys, "_MEIPASS", _app_dir)) / "frontend_dist"
 
     # 安装版（Inno Setup 装到 Program Files 等只读目录）下 exe 目录不可写，
     # 数据目录自动回退到 %LOCALAPPDATA%\LanShare，避免启动即写入失败。
     # 便携版（exe 随便放）不受影响，数据仍在 exe 旁。
-    _default_data = APP_DIR / "data"
+    _default_data = _app_dir / "data"
     try:
         _default_data.mkdir(parents=True, exist_ok=True)
         _probe = _default_data / ".lanshare_probe"
-        _probe.write_bytes(b"")
+        _ = _probe.write_bytes(b"")
         _probe.unlink()
     except OSError:
         _local = os.environ.get("LOCALAPPDATA") or str(Path.home())
         _default_data = Path(_local) / "LanShare"
 else:
     # 源码运行：项目根目录
-    APP_DIR = Path(__file__).resolve().parent.parent
-    FRONTEND_DIST = APP_DIR / "frontend" / "dist"
-    _default_data = APP_DIR / "data"
+    _app_dir = Path(__file__).resolve().parent.parent
+    _frontend_dist = _app_dir / "frontend" / "dist"
+    _default_data = _app_dir / "data"
+
+APP_DIR = _app_dir
+FRONTEND_DIST = _frontend_dist
 
 # 数据目录（可通过环境变量覆盖，如 LANSHARE_DATA_DIR=D:/lanshare-data）
 DATA_DIR = Path(os.getenv("LANSHARE_DATA_DIR", str(_default_data)))
